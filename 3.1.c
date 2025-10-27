@@ -33,6 +33,10 @@ bool defineOOF(const double x);
  */
 double getY(const double x);
 
+/**
+ * @brief точка входа в программу
+ * @return возвращает 0, если программа выполнена корректно
+*/
 
 int main()
 {
