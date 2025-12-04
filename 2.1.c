@@ -23,6 +23,10 @@ void getUbivanie(const double a, const double b, const double c);
  */
 double getValue();  
 
+/**
+ * @brief VOZRASTANIE - значения в порядке возрастания
+ * @brief UBIVANIE - значения в порядке убывания
+ */
 enum {VOZRASTANIE, UBIVANIE};
 
 /**
@@ -35,6 +39,9 @@ int main(void)
     double a = getValue();
     double b = getValue();
     double c = getValue();
+    double minimum = min(min(a, b), c);
+    double maximum = max(max(a, b), c);
+    double average = a + b + c - minimum - maximum;
     printf("Выберите порядок вывода: %d - по возрастанию, %d - по убыванию\n", VOZRASTANIE, UBIVANIE);
     int choice = (int) getValue();
     switch (choice)
@@ -49,7 +56,7 @@ int main(void)
         break;
     default:
         printf("Неправильный выбор!\n");
-        abort();
+        return 1;
     }
 
     return 0;
@@ -66,18 +73,12 @@ double getValue()
     return value;
 }
 
-void getVozrastanie(const double a, const double b, const double c)
+void getVozrastanie(const double minimum, const double average, const double maximum)
 {
-    double minimum = min(min(a, b), c);
-    double maximum = max(max(a, b), c);
-    double average = a + b + c - minimum - maximum;
     printf("%.2lf, %.2lf, %.2lf\n", minimum, average, maximum);
 }
 
-void getUbivanie(const double a, const double b, const double c)
+void getUbivanie(const double maximum, const double average, const double minimum)
 {
-    double minimum = min(min(a, b), c);
-    double maximum = max(max(a, b), c);
-    double average = a + b + c - minimum - maximum;
     printf("%.2lf, %.2lf, %.2lf\n", maximum, average, minimum);
 }
