@@ -3,19 +3,19 @@
 
 /**
  * @brief выводит три числа в порядке возрастания
- * @param a первое число
- * @param b второе число
- * @param c третье число
+ * @param minimum первое число(минимальное)
+ * @param average второе число(среднее)
+ * @param maximum третье число(максимальное)
  */
-void getVozrastanie(const double a, const double b, const double c);
+void getVozrastanie(const double minimum, const double average, const double maximum);
 
 /**
  * @brief выводит три числа в порядке убывания
- * @param a первое число
- * @param b второе число
- * @param c третье число
+ * @param maximum первое число(максимальное)
+ * @param average второе число(среднее)
+ * @param minimum третье число(минимальное)
  */
-void getUbivanie(const double a, const double b, const double c);
+void getUbivanie(const double maximum, const double average, const double minimum);
 
 /**
  * @brief считывает значение с клавиатуры с проверкой ввода
