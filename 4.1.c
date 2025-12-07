@@ -72,7 +72,7 @@ enum {RANDOM = 1, MANUAL};
 int main()
 {
     size_t size = getSize("Введите размер массива:  ");
-    int* arr = malloc(size * sizeof(int));
+    int* arr = (int*) malloc(size * sizeof(int));
     if (arr == NULL)
     {
         printf("Error");
