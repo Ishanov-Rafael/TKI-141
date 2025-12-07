@@ -165,6 +165,11 @@ void fillRandom(int* arr, const size_t size)
     int start = Value();
     printf("Диапазон end: ");
     int end = Value();
+    if (start > end)
+    {
+        printf("Error: start > end\n");
+        exit(1);    
+    }
     for (size_t i = 0; i < size; i++)
     {
         arr[i] = (rand() % (end - start + 1)) + start;
