@@ -13,7 +13,7 @@ int Value();
  * @param message текстовое сообщение о необходимости ввода массива 
  * @return выводит размер массива
  */ 
-size_t getSize(char* message);
+size_t getSize(const char* message);
 
 /**
  * @brief считывает значения элементов массива
@@ -23,11 +23,18 @@ size_t getSize(char* message);
 void fillArray(int* arr, const size_t size);
 
 /**
+ * @brief выделяет память для массива
+ * @param size размер массива
+ * @return указатель на выделенную память
+ */
+int* getArray(size_t size);
+
+/**
  * @brief выводит элементы массива
  * @param arr массив
  * @param size размер массива
  */
-void printArray(int* arr, const size_t size);
+void printArray(const int* arr, const size_t size);
 
 /** 
  * @brief заполняет массив случайными числами в пределах диапозона введеного пользователем
@@ -69,15 +76,10 @@ enum {RANDOM = 1, MANUAL};
  * @brief точка входа в программу
  * @return возвращает 0 если программа выполнена корректно
  */
-int main()
+int main(void)
 {
     size_t size = getSize("Введите размер массива:  ");
-    int* arr = (int*) malloc(size * sizeof(int));
-    if (arr == NULL)
-    {
-        printf("Error");
-        exit(1);
-    }
+    int* arr = getArray(size);
     printf("Выберите способ заполнения массива:\n"
             "%d случайными числами, %d вручную ", RANDOM, MANUAL);
     int choice = Value();
@@ -109,7 +111,8 @@ int main()
     int A = Value();
     int count = countOddMoreThanA(arr, size, A);
     printf("\nКоличество нечетных элементов с модулем > %d = %d", A, count);
-
+    printf("\nИсходный массив перед умножением нечетных чисел кратных 3 на их индексы");
+    printArray(arr, size);
     umnozhenieOddKratnieOf3OnIndex(arr, size);
     printf("\nМассив после умножения нечетных кратных 3 на их индексы:");
     printArray(arr, size);
@@ -124,21 +127,32 @@ int Value()
     if (!scanf_s("%d", &value))
     {
         printf("ERROR\n");
-        exit(1);
+        abort();
     }
     return value;
 }
 
-size_t getSize(char* message)
+size_t getSize(const char* message)
 {
     printf("%s", message);
     int value = Value();
     if (value <= 0)
     {
         printf("ERROR");
-        exit(1);
+        abort();
     }
     return (size_t)value;
+}
+
+int* getArray(size_t size)
+{
+    int* arr = (int*) malloc(size * sizeof(int));
+    if (arr == NULL)
+    {
+        printf("Error");
+        exit(1);
+    }
+    return arr;
 }
 
 void fillArray(int* arr, const size_t size)
@@ -150,7 +164,7 @@ void fillArray(int* arr, const size_t size)
     }
 }
 
-void printArray(int* arr, const size_t size)
+void printArray(const int* arr, const size_t size)
 {
     for (size_t i = 0; i < size; i++)
     {
