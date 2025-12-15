@@ -124,7 +124,7 @@ int Value()
     if (!scanf_s("%d", &value))
     {
         printf("ERROR\n");
-        abort();
+        exit(1);
     }
     return value;
 }
@@ -136,7 +136,7 @@ size_t getSize(char* message)
     if (value <= 0)
     {
         printf("ERROR");
-        abort();
+        exit(1);
     }
     return (size_t)value;
 }
