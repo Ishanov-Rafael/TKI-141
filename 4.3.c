@@ -13,7 +13,7 @@ int Value();
  * @param message сообщение пользователю
  * @return Размер массива
  */
-size_t getSize(char* message);
+size_t getSize(const char* message);
 
 /**
  * @brief Заполнение массива с клавиатуры
@@ -29,7 +29,7 @@ void fillArray(int** arr, const size_t rows, const size_t columns);
  * @param rows Количество строк массива
  * @param columns Количество столбцов массива
  */
-void printArray(int** arr, const size_t rows, const size_t columns);
+void printArray(const int** arr, const size_t rows, const size_t columns);
 
 /**
  * @brief Заполнение массива случайными числами
