@@ -13,7 +13,7 @@ int Value(void);
  * @param message текстовое сообщение о необходимости ввода массива 
  * @return выводит размер массива
  */
-size_t getSize(char* message);
+size_t getSize(const char* message);
 
 /**
  * @brief считывает значения элементов массива
@@ -34,7 +34,15 @@ void fillRandom(int* arr, const size_t size);
  * @param arr массив
  * @param size размер массива
  */
-void printArray(int* arr, const size_t size);
+void printArray(const int* arr, const size_t size);
+
+
+/**
+ * @brief выделяет память для массива
+ * @param size размер массива
+ * @return указатель на выделенную память
+ */
+int* getArray(size_t size);
 
 /**
  * @brief заменяет последний отрицательный элемент на модуль первого
@@ -49,7 +57,7 @@ int replaceLastNegativeWithAbsFirst(int* arr, const size_t size);
  * @param num проверяемое число.
  * @return возвращает 1 если совпадают, 0 если нет
  */
-int hasSameFirstTwoDigits(int num);
+int hasSameFirstTwoDigits(const int num);
 
 /**
  * @brief Удаляет из массива все элементы у которых первая и вторая цифры совпадают
@@ -80,12 +88,7 @@ enum {RANDOM = 1, MANUAL};
 int main(void)
 {
     size_t size = getSize("Введите размер массива: ");
-    int* arr = (int*) malloc(size * sizeof(int));
-    if (arr == NULL)
-    {
-        printf("Error");
-        exit(1);
-    }
+    int* arr = getArray(size);
     printf("Выберите способ заполнения массива:\n"
             "%d случайными числами, %d вручную ", RANDOM, MANUAL);
     int choice = Value();
@@ -129,7 +132,7 @@ int main(void)
 
 int Value(void)
 {
-    int v;
+    int v = 0;
     if (scanf_s("%d", &v) != 1)
     {
         printf("Error\n");
@@ -138,9 +141,9 @@ int Value(void)
     return v;
 }
 
-size_t getSize(char* msg)
+size_t getSize(const char* message)
 {
-    printf("%s", msg);
+    printf("%s", message);
     int v = Value();
     if (v <= 0)
     {
@@ -148,6 +151,17 @@ size_t getSize(char* msg)
         exit(1);
     }
     return (size_t)v;
+}
+
+int* getArray(size_t size)
+{
+    int* arr = (int*) malloc(size * sizeof(int));
+    if (arr == NULL)
+    {
+        printf("Error");
+        exit(1);
+    }
+    return arr;
 }
 
 void fillArray(int* arr, const size_t size)
@@ -176,7 +190,7 @@ void fillRandom(int* arr, const size_t size)
     }
 }
 
-void printArray(int* arr, const size_t size)
+void printArray(const int* arr, const size_t size)
 {
     for (size_t i = 0; i < size; i++)
     {
@@ -203,7 +217,7 @@ int replaceLastNegativeWithAbsFirst(int* arr, const size_t size)
     return 1;
 }
 
-int hasSameFirstTwoDigits(int num)
+int hasSameFirstTwoDigits(const int num)
 {
     int n = abs(num);
     if (n < 10) return 0;
@@ -216,7 +230,6 @@ int hasSameFirstTwoDigits(int num)
 
 int* removeSameFirstTwoDigits(int* arr, const size_t size, size_t* newSize)
 {
-    *newSize = 0;
     for (size_t i = 0; i < size; i++)
     {
         if (!hasSameFirstTwoDigits(arr[i]))
