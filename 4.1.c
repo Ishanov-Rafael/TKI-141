@@ -16,6 +16,13 @@ int Value();
 size_t getSize(const char* message);
 
 /**
+ * @brief проверяет что указатель на массив не NULL
+ * @param arr указатель на массив
+ */
+void checkArr(int** arr);
+
+
+/**
  * @brief считывает значения элементов массива
  * @param arr массив
  * @param size размер массива
@@ -27,7 +34,7 @@ void fillArray(int* arr, const size_t size);
  * @param size размер массива
  * @return указатель на выделенную память
  */
-int* getArray(size_t size);
+int* getArray(const size_t size);
 
 /**
  * @brief выводит элементы массива
@@ -44,6 +51,14 @@ void printArray(const int* arr, const size_t size);
 void fillRandom(int* arr, const size_t size);
 
 /**
+ * @brief создает копию массива
+ * @param arr массив
+ * @param size размер массива
+ * @return полученный массив
+*/
+int* copyArray(const int* arr, const size_t size);
+
+ /**
  * @brief находит произведение четных элементов значения которых по модулю меньше 5
  * @param arr массив 
  * @param size размер массива
@@ -111,12 +126,14 @@ int main(void)
     int A = Value();
     int count = countOddMoreThanA(arr, size, A);
     printf("\nКоличество нечетных элементов с модулем > %d = %d", A, count);
+    int* arr_copy = copyArray(arr, size);
     printf("\nИсходный массив перед умножением нечетных чисел кратных 3 на их индексы");
     printArray(arr, size);
-    umnozhenieOddKratnieOf3OnIndex(arr, size);
+    umnozhenieOddKratnieOf3OnIndex(arr_copy, size);
     printf("\nМассив после умножения нечетных кратных 3 на их индексы:");
-    printArray(arr, size);
+    printArray(arr_copy, size);
 
+    free(arr_copy);
     free(arr);
     return 0;
 }
@@ -132,6 +149,15 @@ int Value()
     return value;
 }
 
+void checkArr(int** arr)
+{
+    if (arr == NULL)
+    {
+        printf("Ошибка\n");
+        exit(1);
+    }
+}
+
 size_t getSize(const char* message)
 {
     printf("%s", message);
@@ -144,19 +170,16 @@ size_t getSize(const char* message)
     return (size_t)value;
 }
 
-int* getArray(size_t size)
+int* getArray(const size_t size)
 {
     int* arr = (int*) malloc(size * sizeof(int));
-    if (arr == NULL)
-    {
-        printf("Error");
-        exit(1);
-    }
+    checkArr(arr); 
     return arr;
 }
 
 void fillArray(int* arr, const size_t size)
 {
+    checkArr(arr);
     for (size_t i = 0; i < size; i++)
     {
         printf("Vvedite A[%zu] = ", i);
@@ -166,6 +189,7 @@ void fillArray(int* arr, const size_t size)
 
 void printArray(const int* arr, const size_t size)
 {
+    checkArr(arr);
     for (size_t i = 0; i < size; i++)
     {
         printf("%d ", arr[i]);
@@ -175,6 +199,7 @@ void printArray(const int* arr, const size_t size)
 
 void fillRandom(int* arr, const size_t size)
 {
+    checkArr(arr);
     printf("Диапазон start: ");
     int start = Value();
     printf("Диапазон end: ");
@@ -190,8 +215,21 @@ void fillRandom(int* arr, const size_t size)
     }
 }
 
+int* copyArray(const int* arr, const size_t size)
+{
+    checkArr(arr);
+    int* copyArr = getArray(size);
+    for (size_t i = 0; i < size; i++)
+    {
+        copyArr[i] = arr[i];
+    }
+    return copyArr;
+
+}
+
 double productEvenLessThan5(const int* arr, const size_t size)
 {
+    checkArr(arr);
     double product = 1;
     int found = 0; 
 
@@ -208,6 +246,7 @@ double productEvenLessThan5(const int* arr, const size_t size)
 
 int countOddMoreThanA(const int* arr, const size_t size, int A)
 {
+    checkArr(arr);
     int count = 0;
 
     for (size_t i = 0; i < size; i++)
@@ -223,6 +262,7 @@ int countOddMoreThanA(const int* arr, const size_t size, int A)
 
 void umnozhenieOddKratnieOf3OnIndex(int* arr, const size_t size)
 {
+    checkArr(arr);
     for (size_t i = 0; i < size; i++)
     {
         if (arr[i] % 2 != 0 && arr[i] % 3 == 0)
