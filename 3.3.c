@@ -127,13 +127,13 @@ double getRecurrent(const int n, const double x)
 double getSumE(const double e, const double x)
 {
     double current = -2.0 * x * x;
-    double sum = current;
+    double result = 0;
 
-    for (int n = 0; fabs(current) > e; n++)
+    for (int n = 1; fabs(func(x) - result) > e; n++)
     {
+        result += current;
         current *= getRecurrent(n, x);
-        sum += current;
     }
 
-    return sum;
+    return result;
 }
