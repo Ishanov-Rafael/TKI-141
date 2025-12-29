@@ -13,7 +13,13 @@ int Value();
  * @param message сообщение пользователю
  * @return Размер массива
  */
-size_t getSize(const char* message);
+size_t getSize(char* message);
+
+/**
+ * @brief проверяет что указатель на массив не NULL
+ * @param arr указатель на массив
+ */
+void checkArr(int** arr);
 
 /**
  * @brief Заполнение массива с клавиатуры
@@ -29,7 +35,7 @@ void fillArray(int** arr, const size_t rows, const size_t columns);
  * @param rows Количество строк массива
  * @param columns Количество столбцов массива
  */
-void printArray(const int** arr, const size_t rows, const size_t columns);
+void printArray(int** arr, const size_t rows, const size_t columns);
 
 /**
  * @brief Заполнение массива случайными числами
@@ -173,6 +179,15 @@ int Value()
     return value;
 }
 
+void checkArr(int** arr)
+{
+    if (arr == NULL)
+    {
+        printf("Ошибка\n");
+        exit(1);
+    }
+}
+
 size_t getSize(char* message)
 {
     printf("%s", message);
@@ -187,6 +202,7 @@ size_t getSize(char* message)
 
 void fillArray(int** arr, const size_t rows, const size_t columns)
 {
+    checkArr(arr);
     for (size_t i = 0; i < rows; i++)
     {
         for (size_t j = 0; j < columns; j++)
@@ -199,6 +215,7 @@ void fillArray(int** arr, const size_t rows, const size_t columns)
 
 void printArray(int** arr, const size_t rows, const size_t columns)
 {
+    checkArr(arr);
     for (size_t i = 0; i < rows; i++)
     {
         for (size_t j = 0; j < columns; j++)
@@ -212,6 +229,7 @@ void printArray(int** arr, const size_t rows, const size_t columns)
 
 void fillRandom(int** arr, const size_t rows, const size_t columns)
 {
+    checkArr(arr);
     printf("Введите начало диапазона случайных чисел: ");
     int start = Value();
     printf("Введите конец диапазона случайных чисел: ");
@@ -240,11 +258,6 @@ int** getArray(const size_t rows, const size_t columns)
         if (arr[i] == NULL)
         {
             printf("Ошибка выделения памяти для строки %zu.\n", i);
-            for (size_t j = 0; j < i; j++)
-            {
-                free(arr[j]);
-            }
-            free(arr);
             exit(1);
         }
     }
@@ -253,6 +266,7 @@ int** getArray(const size_t rows, const size_t columns)
 
 void freeArray(int** arr, const size_t rows)
 {
+    checkArr(arr);
     for (size_t i = 0; i < rows; i++)
     {
         free(arr[i]);
@@ -271,6 +285,7 @@ void checkRange(const int start, const int end)
 
 int** copyArray(int** arr, const size_t rows, const size_t columns)
 {
+    checkArr(arr);
     int** copyArr = getArray(rows, columns);
     for (size_t i = 0; i < rows; i++)
     {
@@ -284,6 +299,7 @@ int** copyArray(int** arr, const size_t rows, const size_t columns)
 
 void replaceMultiplesOfThree(int** arr, const size_t rows, const size_t columns)
 {
+    checkArr(arr);
     for (size_t j = 0; j < columns; j++) 
     {
         for (size_t i = 0; i < rows; i++) 
@@ -298,6 +314,7 @@ void replaceMultiplesOfThree(int** arr, const size_t rows, const size_t columns)
 
 size_t rowsToDelete(int** arr, const size_t rows, const size_t columns)
 {
+    checkArr(arr);
     size_t count = 0;
     for (size_t i = 0; i < rows; i++)
     {
@@ -311,6 +328,7 @@ size_t rowsToDelete(int** arr, const size_t rows, const size_t columns)
 
 void deleteRows(int** arr, int** newArr, const size_t rows, const size_t columns, const size_t newRows)
 {
+    checkArr(arr);
     size_t k = 0; 
     for (size_t i = 0; i < rows; i++)
     {
