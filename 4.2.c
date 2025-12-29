@@ -66,7 +66,7 @@ int hasSameFirstTwoDigits(const int num);
  * @param newSize указатель на переменную для нового размера
  * @return возвращает новый массив
  */
-int* removeSameFirstTwoDigits(int* arr, const size_t size, size_t* newSize);
+int* removeSameFirstTwoDigits(int* arr, const size_t size, size_t newSize);
 
 /**
  * @brief Формирует массив M по правилу: четное M[i] = i * P[i], нечетное M[i] = -P[i]
@@ -228,7 +228,7 @@ int hasSameFirstTwoDigits(const int num)
     return (first == second) ? 1 : 0;
 }
 
-int* removeSameFirstTwoDigits(int* arr, const size_t size, size_t* newSize)
+int* removeSameFirstTwoDigits(int* arr, const size_t size, size_t newSize)
 {
     for (size_t i = 0; i < size; i++)
     {
