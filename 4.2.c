@@ -13,7 +13,7 @@ int Value(void);
  * @param message текстовое сообщение о необходимости ввода массива 
  * @return выводит размер массива
  */
-size_t getSize(const char* message);
+size_t getSize(char* message);
 
 /**
  * @brief считывает значения элементов массива
@@ -42,7 +42,7 @@ void printArray(const int* arr, const size_t size);
  * @param size размер массива
  * @return указатель на выделенную память
  */
-int* getArray(size_t size);
+int* getArray(const size_t size);
 
 /**
  * @brief заменяет последний отрицательный элемент на модуль первого
@@ -153,7 +153,7 @@ size_t getSize(const char* message)
     return (size_t)v;
 }
 
-int* getArray(size_t size)
+int* getArray(const size_t size)
 {
     int* arr = (int*) malloc(size * sizeof(int));
     if (arr == NULL)
@@ -233,10 +233,10 @@ int* removeSameFirstTwoDigits(int* arr, const size_t size, size_t newSize)
     for (size_t i = 0; i < size; i++)
     {
         if (!hasSameFirstTwoDigits(arr[i]))
-            (*newSize)++;
+            (newSize)++;
     }
 
-    int* newArr = (int*) malloc((*newSize) * sizeof(int));
+    int* newArr = (int*) malloc((newSize) * sizeof(int));
     if (!newArr)
     {
         printf("Error\n");
