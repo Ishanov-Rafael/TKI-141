@@ -70,7 +70,7 @@ int main()
     checkPositive(e);
     for (double x = min; x <= max + DBL_EPSILON; x += step)
     {
-        printf("x = %.4lf | 2(cos²x - 1) = %.6lf | S = %.6lf\n", x, func(x), getSunE(e, x));
+        printf("x = %.4lf | 2(cos²x - 1) = %.6lf | S = %.6lf\n", x, func(x), getSumE(e, x));
     }
 
     return 0;
