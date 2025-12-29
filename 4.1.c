@@ -19,7 +19,7 @@ size_t getSize(const char* message);
  * @brief проверяет что указатель на массив не NULL
  * @param arr указатель на массив
  */
-void checkArr(int** arr);
+void checkArr(int* arr);
 
 
 /**
@@ -149,7 +149,7 @@ int Value()
     return value;
 }
 
-void checkArr(int** arr)
+void checkArr(int* arr)
 {
     if (arr == NULL)
     {
