@@ -13,7 +13,7 @@ int Value(void);
  * @param message текстовое сообщение о необходимости ввода массива 
  * @return выводит размер массива
  */
-size_t getSize(char* message);
+size_t getSize(const char* message);
 
 /**
  * @brief считывает значения элементов массива
