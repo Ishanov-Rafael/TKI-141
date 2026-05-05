@@ -17,7 +17,7 @@ double getValue(std::string report = "");
 int main() 
 {
     Point pts[4];
-    for (int i = 0; i < 4; ++i) 
+    for (size_t i = 0; i < 4; ++i)
     {
         std::cout << "Point " << i + 1 << ":" << std::endl;
         double x = getValue(" x: ");
