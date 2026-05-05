@@ -1,9 +1,12 @@
-#include "Line.h"
+#include "line.h"
+#include "point.h" 
+#include "color.h"     
+#include <iostream>    
 
-Line::Line(Point start, Point end, Color c, LineStyle s) 
+Line::Line(const Point& start, const Point& end, const Color& c, const LineStyle& s) 
     : p1(start), p2(end), color(c), style(s) {}
 
-void Line::setAppearance(LineStyle s, Color c) 
+void Line::setAppearance(const LineStyle& s, const Color& c) 
 {
     style = s;
     color = c;
