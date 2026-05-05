@@ -10,28 +10,17 @@ struct Point
     double y;
 
     /**
-     * @brief Перегрузка оператора равенства (требование задания)
+     * @brief Оператор сравнения двух точек
      */
-    bool operator==(const Point& other) const 
-    {
-        return (x == other.x && y == other.y);
-    }
+    bool operator==(const Point& other) const;
 
     /**
-     * @brief Оператор вывода точки в поток
+     * @brief Оператор ввода точки в поток
      */
-    friend std::ostream& operator<<(std::ostream& os, const Point& p) 
-    {
-        os << "(" << p.x << ", " << p.y << ")";
-        return os;
-    }
+    friend std::ostream& operator<<(std::ostream& is, const Point& p);
 
     /**
-     * @brief Оператор ввода точки из потока
+     * @brief оператор ввода точки из потока
      */
-    friend std::istream& operator>>(std::istream& is, Point& p) 
-    {
-        is >> p.x >> p.y;
-        return is;
-    }
+    friend std::istream& operator>>(std::istream& is, Point& p);
 };
