@@ -20,7 +20,7 @@ public:
      * @param c третья точка 
      * @param d четвертая точка 
      */
-    Tetrahedron(Point a, Point b, Point c, Point d);
+    Tetrahedron(const Point& a, const Point& b, const Point& c, const Point& d);
 
     /** 
      * @brief Расчет объема тетраэдра   
