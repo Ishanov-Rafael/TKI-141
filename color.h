@@ -19,7 +19,7 @@ public:
      * @param g зеленый
      * @param b синий
      */
-    Color(int r = 0, int g = 0, int b = 0);
+    Color(const int r = 0, const int g = 0, const int b = 0);
 
     friend std::ostream& operator<<(std::ostream& os, const Color& c);
     friend std::istream& operator>>(std::istream& is, Color& c);
