@@ -17,12 +17,12 @@ public:
     /**
      * @brief Конструктор линии с параметрами по умолчанию
      */
-    Line(Point start, Point end, Color c = Color(0, 0, 0), LineStyle s = LineStyle(LineType::solid, 1));
+    Line(const Point& start, const Point& end, const Color& c = Color(0, 0, 0), const LineStyle& s = LineStyle(LineType::solid, 1));
 
     /**
      * @brief Метод изменения стиля и цвета
      */
-    void setAppearance(LineStyle s, Color c);
+    void setAppearance(const LineStyle& s, const Color& c);
 
     /**
      * @brief Статический метод для чтения данных линии из консоли
