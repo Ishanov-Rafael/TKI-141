@@ -26,8 +26,5 @@ public:
      * @param t тип линии
      * @param th толщина (должна быть > 0)
      */
-    LineStyle(LineType t = LineType::solid, int th = 1) : type(t), thickness(th) 
-    {
-        if (thickness <= 0) thickness = 1; 
-    }
+    LineStyle(const LineType& t = LineType::solid, const int th = 1);
 };
