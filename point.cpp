@@ -24,24 +24,10 @@ double Point::getZ() const
 
 bool Point::operator==(const Point &p) const
 {
-    if (this->x == p.getX() && this->y == p.getY() && this->z == p.getZ())
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (this->x == p.x && this->y == p.y && this->z == p.z);
 }
 
 bool Point::operator!=(const Point &p) const
 {
-    if (this->x != p.getX() || this->y != p.getY() || this->z != p.getZ())
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return !(*this == p);
 }
