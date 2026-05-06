@@ -8,8 +8,22 @@
 class Color 
 {
 private:
-    uint8_t red;   
-    uint8_t green; 
+    /** 
+     * @brief Интенсивность красного канала.
+     * Допустимый диапазон значений: [0, 255].
+     */
+    uint8_t red;
+
+    /** 
+     * @brief Интенсивность зеленого канала.
+     * Допустимый диапазон значений: [0, 255].
+     */
+    uint8_t green;
+
+    /** 
+     * @brief Интенсивность синего канала.
+     * Допустимый диапазон значений: [0, 255].
+     */
     uint8_t blue;  
 
 public:
@@ -21,6 +35,13 @@ public:
      */
     Color(const int r = 0, const int g = 0, const int b = 0);
 
+    /**
+     * @brief Оператор для вывода цвета 
+     */
     friend std::ostream& operator<<(std::ostream& os, const Color& c);
+
+    /**
+     * @brief Оператор для чтения цвета из консоли
+     */
     friend std::istream& operator>>(std::istream& is, Color& c);
 };
