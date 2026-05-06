@@ -9,8 +9,24 @@
 class Line 
 {
 private:
-    Point p1, p2;
+    /**
+     * @brief начальная точка линии
+     */
+    Point p1;
+
+    /**
+     * @brief конечная точка линии
+     */
+    Point p2;
+
+    /**
+     * @brief цвет линии в формате RGB
+     */
     Color color;
+
+    /**
+     * @brief стиль линии(тип и толщина)
+     */
     LineStyle style;
 
 public:
