@@ -1,7 +1,7 @@
 #include "Color.h"
 #include <stdexcept>
 
-Color::Color(int r, int g, int b) 
+Color::Color(const int r, const int g, const int b) 
 {
     if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) 
     {
