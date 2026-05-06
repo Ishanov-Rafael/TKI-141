@@ -1,7 +1,11 @@
 #pragma once
 
 /**
- * @brief Перечисление доступных типов линий
+ * @brief solid - сплошная линяя
+ * @brief dash - пунктирная линия
+ * @brief dot - точки
+ * @brief dash_dot - точка-тире
+ * @brief dashdotdot - две точки тире
  */
 enum class LineType 
 {
@@ -18,7 +22,14 @@ enum class LineType
 class LineStyle 
 {
 public:
+    /** 
+     * @brief Тип линии. Определяет визуальный паттерн (сплошная, пунктир и т.д.)
+     */
     LineType type;
+
+    /** 
+     * @brief Толщина линии, измеряется в пикселях. Должна быть больше 0
+     */
     int thickness;
 
     /**
