@@ -1,6 +1,10 @@
 #include <iostream>
 #include "Line.h"
 
+/**
+ * @brief точка входа в программу
+ * @return возвращает 0, если программа выполнена корректно
+ */
 int main() 
 {
     try 
@@ -13,7 +17,8 @@ int main()
         std::cout << "An attempt to create an incorrect color (300, 0, 0)..." << std::endl;
         Color badColor(300, 0, 0);
 
-    } 
+    }
+    
     catch (const std::exception& e) 
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
