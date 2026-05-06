@@ -16,16 +16,22 @@ private:
 public:
     /**
      * @brief Конструктор линии с параметрами по умолчанию
+     * @param start Начальная точка
+     * @param end Конечная точка
+     * @param c Цвет линии
+     * @param s Стиль линии
      */
     Line(const Point& start, const Point& end, const Color& c = Color(0, 0, 0), const LineStyle& s = LineStyle(LineType::solid, 1));
 
     /**
      * @brief Метод изменения стиля и цвета
+     * @param s Новый стиль
+     * @param c Новый цвет
      */
     void setAppearance(const LineStyle& s, const Color& c);
 
     /**
-     * @brief Статический метод для чтения данных линии из консоли
+     * @brief Статический метод для ввода данных о линии из консоли
      */
     static Line read();
 
