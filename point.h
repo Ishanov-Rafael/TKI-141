@@ -9,18 +9,27 @@ struct Point
     double x;
     double y;
 
-    /**
-     * @brief Оператор сравнения двух точек
+   /**
+     * @brief Оператор сравнения двух точек на равенство
+     * @param other Другая точка для сравнения
+     * @return true, если точки совпадают с учетом погрешности
      */
     bool operator==(const Point& other) const;
 
     /**
-     * @brief Оператор ввода точки в поток
+     * @brief Оператор сравнения двух точек на неравенство
+     * @param other Другая точка для сравнения
+     * @return true, если точки не совпадают
      */
-    friend std::ostream& operator<<(std::ostream& is, const Point& p);
+    bool operator!=(const Point& other) const;
 
     /**
-     * @brief оператор ввода точки из потока
+     * @brief Оператор для вывода точки в поток
+     */
+    friend std::ostream& operator<<(std::ostream& os, const Point& p);
+
+    /**
+     * @brief Оператор для чтения точки из потока
      */
     friend std::istream& operator>>(std::istream& is, Point& p);
 };
