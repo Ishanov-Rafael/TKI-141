@@ -1,8 +1,10 @@
 #include "point.h"
+#include <cmath>  
+#include <limits>
 
 bool Point::operator==(const Point& other) const 
 {
-    const double eps = 1e-9;
+    const double eps = std::numeric_limits<double>::epsilon();
     return (std::abs(x - other.x)< eps && std::abs(y - other.y) < eps);
 }
 
