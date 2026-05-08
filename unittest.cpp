@@ -1,66 +1,53 @@
-#include <iostream>
-#include <cassert>
-#include "point.h"
-#include "color.h"
-#include "linestyle.h"
-#include "line.h"
+#include "CppUnitTest.h"
+#include "../task2/point.h"
+#include "../task2/color.h"
+#include "../task2/linestyle.h"
+#include "../task2/line.h"
 
-void TestPoint() 
-{
-    Point p(10.5, 20.0);
-    assert(p.x == 10.5);
-    assert(p.y == 20.0);
-    
-    Point p2(10.5, 20.0);
-    assert(p == p2); 
-    
-    std::cout << "TestPoint passed!" << std::endl;
-}
+using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-void TestColor() 
+namespace Tests
 {
-    Color c(255, 128, 0);
-    try 
+    TEST_CLASS(GeometryTests)
     {
-        Color errorColor(300, 0, 0);
-        assert(false && "constructor should have thrown an exception"); 
-    }
-    catch (const std::out_of_range& e)
-    {
-        std::cout << "TestColor passed!" << std::endl;
-    }
-}
+    public:
+        
+        TEST_METHOD(Point_Constructor_InitializesCorrectly)
+        {
+            double expectedX = 10.5;
+            double expectedY = 20.0;
+            Point p(expectedX, expectedY);
 
-void TestLineStyle() 
-{
-    LineStyle s(LineType::dash, 5);
-    assert(s.thickness == 5);
-    assert(s.type == LineType::dash);
-    LineStyle s2(LineType::solid, -10);
-    assert(s2.thickness == 1); 
-    
-    std::cout << "TestLineStyle passed!" << std::endl;
-}
+            Assert::AreEqual(expectedX, p.x);
+            Assert::AreEqual(expectedY, p.y);
+        }
 
-void TestLine() 
-{
-    Point start(0, 0), end(10, 10);
-    Color red(255, 0, 0);
-    LineStyle bold(LineType::solid, 3);
-    
-    Line l(start, end, red, bold);
-    
-    Color blue(0, 0, 255);
-    l.setAppearance(bold, blue);
-    
-    std::cout << "TestLine passed!" << std::endl;
-}
+        TEST_METHOD(Point_EqualityOperator_Works)
+        {
+            Point p1(5.0, 5.0);
+            Point p2(5.0, 5.0);
+            Assert::IsTrue(p1 == p2);
+        }
 
-int main() 
-{
-    TestPoint();
-    TestColor();
-    TestLineStyle();
-    TestLine();
-    return 0;
+        TEST_METHOD(Color_Constructor_ThrowsExceptionOnInvalidValue)
+        {
+            auto action = [] {Color c(300, 0, 0); };
+            Assert::ExpectException<std::out_of_range>(action);
+        }
+
+        TEST_METHOD(LineStyle_Thickness_FixesNegativeValues)
+        {
+            LineStyle s(LineType::solid, -10);
+            Assert::AreEqual(1, s.thickness); 
+        }
+
+        TEST_METHOD(Line_SetAppearance_UpdatesValues)
+        {
+            Line l(Point(0, 0), Point(10, 10));
+            Color newColor(0, 0, 255);
+            LineStyle newStyle(LineType::dash, 3);
+
+            l.setAppearance(newStyle, newColor);
+        }
+    };
 }
