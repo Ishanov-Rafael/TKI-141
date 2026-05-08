@@ -16,6 +16,13 @@ struct Point
      */
     double y;
 
+    /**
+     * @brief Конструктор точки
+     * @param x_val - значение по оси X
+     * @param y_val - значение по оси Y
+     */
+    Point(double x_val = 0, double y_val = 0) : x(x_val), y(y_val) {}
+
    /**
      * @brief Оператор сравнения двух точек на равенство
      * @param other Другая точка для сравнения
