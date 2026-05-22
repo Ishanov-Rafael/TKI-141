@@ -70,7 +70,7 @@ public:
      * @brief Вставка нового элемента в очередь
      * @param value Значение целого числа для вставки
      */
-    void insert(int value);
+    void insert(const int value);
 
     /**
      * @brief Получить элемент с наименьшим приоритетом (минимальный)
