@@ -22,13 +22,13 @@ int MenuHandler::safe_get_int()
 void MenuHandler::show_menu_ui()
 {
     std::cout << "\n=== Меню управления приоритетной очередью ===" << std::endl;
-    std::cout << "1 - Вставить элемент (INSERT)" << std::endl;
-    std::cout << "2 - Показать минимальный элемент (GET_MIN)" << std::endl;
-    std::cout << "3 - Показать максимальный элемент (GET_MAX)" << std::endl;
-    std::cout << "4 - Удалить минимальный элемент (REMOVE_MIN)" << std::endl;
-    std::cout << "5 - Удалить максимальный элемент (REMOVE_MAX)" << std::endl;
-    std::cout << "6 - Показать всю очередь" << std::endl;
-    std::cout << "0 - Выход" << std::endl;
+    std::cout << "INSERT - Вставить элемент" << std::endl;
+    std::cout << "GET_MIN - Показать минимальный элемент" << std::endl;
+    std::cout << "GET_MAX - Показать максимальный элемент" << std::endl;
+    std::cout << "REMOVE_MIN - Удалить минимальный элемент" << std::endl;
+    std::cout << "REMOVE_MAX - Удалить максимальный элемент" << std::endl;
+    std::cout << "SHOW_QUEUE - Показать всю очередь" << std::endl;
+    std::cout << "EXIT - Выход" << std::endl;
     std::cout << "Ваш выбор: ";
 }
 
