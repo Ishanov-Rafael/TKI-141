@@ -82,7 +82,7 @@ bool DoubleEndedPriorityQueue::is_empty() const
     return m_count == 0;
 }
 
-void DoubleEndedPriorityQueue::insert(int value)
+void DoubleEndedPriorityQueue::insert(const int value)
 {
     int *tempArray = new int[m_count + 1];
     size_t i = 0;
